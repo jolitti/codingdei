@@ -1,4 +1,4 @@
-def insertBestSubSeq(seqs:list[list],newVal:int):
+def insertBestSubSeq(seqs:list,newVal:int):
     if len(seqs)<=0: return [[newVal]]
     ans = []
     for s in seqs:
