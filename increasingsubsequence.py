@@ -1,21 +1,24 @@
-def insertBestSubSeq(seqs:list,newVal:int):
+def insertBestSubSeq(seqs:list,newVal:int, remaining:int):
     if len(seqs)<=0: return [[newVal]]
+    maxLen = max([len(x) for x in seqs])
     ans = []
     for s in seqs:
         if newVal > s[-1]:
             ans.append(s+[newVal])
         elif newVal < s[0]:
-            ans.append([newVal])
-            ans.append(s)
+            if remaining>=maxLen:
+                ans.append([newVal])
+                ans.append(s)
         else:
             ans.append([x for x in s if x<newVal]+[newVal])
             ans.append(s)
     return ans
 
 def findBestSubSeqs(l:list):
+    arrayLen = len(l)
     ans = []
-    for x in l:
-        ans = insertBestSubSeq(ans,x)
+    for i,x in enumerate(l):
+        ans = insertBestSubSeq(ans,x,arrayLen-i)
     return ans
 
 def filterMaxLen(l:list):
