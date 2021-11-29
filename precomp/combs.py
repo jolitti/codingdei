@@ -14,12 +14,13 @@ def paths(n,pos=(0,0)) -> int:
 		else: return 0
 	return sum([paths(n-1,addVec(pos,x)) for x in dirs])
 
-#print(paths(int(sys.argv[1]),(0,0)))
+print(paths(int(sys.argv[1]),(0,0)))
 
-print("ans = { ",end="")
-for x in range(2,15,1):
-	print(x,end="")
-	print(": ",end="")
-	print(paths(x),end="")
-	print(", ",end="")
-print("}")
+#print("ans = { ",end="")
+#for x in range(2,15,1):
+#	print(x,end="")
+#	print(": ",end="")
+#	print(paths(x),end="")
+#	print(", ",end="")
+#print("}")
+
