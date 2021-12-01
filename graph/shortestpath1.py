@@ -1,3 +1,4 @@
+# Debug su standard error, ignorato da kattis
 import sys
 def eprint(*args):
     for a in args:
@@ -5,11 +6,10 @@ def eprint(*args):
         sys.stderr.write(" ")
     sys.stderr.write("\n")
 
-#eprint(*[1,2,3,4])
-
 
 from queue import PriorityQueue
 
+# Aggiungi b alla lista dei contatti di a nel dizionario list
 def link(a,b,links):
     linkList = links.get(a,None)
 
@@ -22,10 +22,13 @@ def link(a,b,links):
     else:
         links[b].append(a) """
 
+# Originariamente scritto per l'implementazione
+# con frozenset
 def getWeight(a,b,weigths):
     if a==b: return 0
     return weigths[(a,b)]
 
+# Main
 while True:
     n,m,queries,start = map(int,input().split())
     if n<=0: break
@@ -36,14 +39,17 @@ while True:
     links = {}
     weigths = {}
 
+    #Inserimento collegamenti
     for i in range(m):
         a,b,w = map(int,input().split())
         link(a,b,links)
         weigths[(a,b)] = w
 
+    # Iterazione algoritmo di dijkstra
     q = PriorityQueue()
     q.put((0,start))
     while not q.empty():
+        # Visualizzazione stato attuale della queue
         eprint(q.queue)
         weigth, index = q.get()
         linkList = links.get(index,None)
@@ -55,7 +61,9 @@ while True:
         if distances[index]<0:
             distances[index]=weigth
     
-    #print(*distances)
+    # Ora che le distanze sono state precomputate,
+    # rispondiamo alle query
+    eprint(*distances)
 
     for i in range(queries):
         d = distances[int(input())]
