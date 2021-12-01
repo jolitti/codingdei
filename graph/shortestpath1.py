@@ -60,8 +60,7 @@ while True:
                     visited.add(x)
                     newWeigth = weigth+getWeight(index,x,weigths)
                     q.put((newWeigth,x))
-        if distances[index]<0:
-            distances[index]=weigth
+                    distances[x] = newWeigth
     
     # Ora che le distanze sono state precomputate,
     # rispondiamo alle query
