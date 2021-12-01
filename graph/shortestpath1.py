@@ -38,6 +38,7 @@ while True:
 
     links = {}
     weigths = {}
+    visited = set() # Nodi già visitati nell'algoritmo
 
     #Inserimento collegamenti
     for i in range(m):
@@ -55,7 +56,8 @@ while True:
         linkList = links.get(index,None)
         if linkList is not None:
             for x in linkList:
-                if distances[x]<0:
+                if x not in visited:
+                    visited.add(x)
                     newWeigth = weigth+getWeight(index,x,weigths)
                     q.put((newWeigth,x))
         if distances[index]<0:
