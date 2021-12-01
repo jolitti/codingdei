@@ -1,5 +1,3 @@
-#TODO: one-way only
-
 from queue import PriorityQueue
 
 def link(a,b,links):
