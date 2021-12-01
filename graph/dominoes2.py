@@ -3,11 +3,11 @@ tiles = []
 chained = {}
 
 def knock(i:int):
-    if not tiles[i]:
-        if i in chained:
-            for t in chained[i]:
+    tiles[i] = True
+    if i in chained:
+        for t in chained[i]:
+            if not tiles[t]:
                 knock(t)
-    tiles[i]=True
 
 
 for case in range(cases):
